@@ -1,0 +1,8 @@
+{
+  "name": "get_api_response",
+  "description": "This tool is useful to get the current weather information of a specific location. Only answers questions about the current weather condition of a location.",
+  "color": "linear-gradient(rgb(55,200,142), rgb(53,53,249))",
+  "iconSrc": "",
+  "schema": "[{\"id\":0,\"property\":\"query\",\"description\":\"This is the place where the user wants to know the weather conditions\",\"type\":\"string\",\"required\":true}]",
+  "func": "const fetch = require('node-fetch');\nconst url = 'https://api.weatherstack.com/current?access_key=b3284b5f1a979d3f54e9b1bdeaa19af2&query=' + $query;\nconst options = {\n    method: 'GET'\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return 'Error in the call';\n}"
+}

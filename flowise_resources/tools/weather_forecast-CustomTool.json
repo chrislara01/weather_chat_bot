@@ -1,0 +1,8 @@
+{
+  "name": "weather_forecast",
+  "description": "This to is useful to get the weather forecast of a specific location.",
+  "color": "linear-gradient(rgb(52,149,124), rgb(137,152,227))",
+  "iconSrc": "",
+  "schema": "[{\"id\":0,\"property\":\"location\",\"description\":\"This is the location that the user wants to know the weather forecast of\",\"type\":\"string\",\"required\":true}]",
+  "func": "const fetch = require('node-fetch');\nconst url = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + $location + '?key=BGV6YLA8ZHKDKSNZV3LHU2UWB';\nconst options = {\n    method: 'GET'\n};\ntry {\n    const response = await fetch(url, options);\n    const text = await response.text();\n    return text;\n} catch (error) {\n    console.error(error);\n    return '';\n}"
+}
